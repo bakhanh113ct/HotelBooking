@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin("http://localhost:5173")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/rooms")
@@ -71,6 +72,9 @@ public class RoomController {
         return ResponseEntity.ok(roomResponses);
     }
 
+
+    ///TODO recheck param (should use requestParam or requestBody?)
+    @GetMapping("/available-rooms")
     public ResponseEntity<List<RoomResponse>> getAvailableRooms(
             @RequestParam("checkInDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkInDate,
             @RequestParam("checkOutDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkOutDate,
